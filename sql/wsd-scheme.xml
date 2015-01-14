@@ -64,9 +64,9 @@
 </key>
 </table>
 <table x="163" y="337" name="crm_dealings">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -86,7 +86,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="595" y="30" name="crm_contacts">
+<table x="582" y="31" name="crm_contacts">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
@@ -131,9 +131,9 @@
 </key>
 </table>
 <table x="787" y="373" name="crm_companies">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -148,41 +148,41 @@
 </key>
 </table>
 <table x="1349" y="551" name="crm_tasks">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
 <table x="163" y="519" name="crm_dealing_tag_relations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
 <table x="166" y="586" name="crm_dealing_tag_names">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
 <table x="1350" y="649" name="crm_recycle">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
 <table x="336" y="341" name="crm_dealing_statuses">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -194,9 +194,9 @@
 </key>
 </table>
 <table x="789" y="32" name="crm_phone_types">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -205,9 +205,9 @@
 </key>
 </table>
 <table x="789" y="122" name="crm_contact_phone_relations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -219,9 +219,9 @@
 </key>
 </table>
 <table x="1080" y="33" name="crm_email_types">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -230,9 +230,9 @@
 </key>
 </table>
 <table x="1081" y="123" name="crm_contact_email_relations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -244,9 +244,9 @@
 </key>
 </table>
 <table x="786" y="251" name="crm_company_phone_relations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -258,9 +258,9 @@
 </key>
 </table>
 <table x="1082" y="253" name="crm_company_email_relations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
