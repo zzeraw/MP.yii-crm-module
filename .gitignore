@@ -1,0 +1,27 @@
+#############
+## OS files
+#############
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+# IDE crap
+.idea
+
+#############
+## Yii
+#############
+
+public/assets/
+protected/runtime/
+themes/classic/views/
