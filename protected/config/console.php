@@ -22,7 +22,7 @@ return array(
     // application components
     'components' => array(
     	'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=pozor',
+            'connectionString' => 'mysql:host=localhost;dbname=yii_crm',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'admin',
