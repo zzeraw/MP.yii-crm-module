@@ -3,41 +3,58 @@
 <!-- Active URL: http://wwwsqldesigner/ -->
 <sql>
 <datatypes db="mysql">
-	<group label="Numeric" color="rgb(238,238,170)">
-		<type label="Integer" length="0" sql="INTEGER" quote=""/>
-	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
-	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
-	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
-	 	<type label="INT" length="0" sql="INT" quote=""/>
-		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
-		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
-		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
-		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
-	</group>
+		<group label="Numeric" color="rgb(238,238,170)">
+			<type label="Integer" length="0" sql="INTEGER" quote=""/>
+			<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+			<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+			<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+			<type label="INT" length="0" sql="INT" quote=""/>
+			<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+			<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+			<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+			<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+		</group>
 
-	<group label="Character" color="rgb(255,200,200)">
-		<type label="Char" length="1" sql="CHAR" quote="'"/>
-		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
-		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
-		<type label="Binary" length="1" sql="BINARY" quote="'"/>
-		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
-		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
-	</group>
+		<group label="Character" color="rgb(255,200,200)">
+			<type label="Char" length="1" sql="CHAR" quote="'"/>
+			<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+			<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+			<type label="Binary" length="1" sql="BINARY" quote="'"/>
+			<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+			<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+		</group>
 
-	<group label="Date &amp; Time" color="rgb(200,255,200)">
-		<type label="Date" length="0" sql="DATE" quote="'"/>
-		<type label="Time" length="0" sql="TIME" quote="'"/>
-		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
-		<type label="Year" length="0" sql="YEAR" quote=""/>
-		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
-	</group>
-	
-	<group label="Miscellaneous" color="rgb(200,200,255)">
-		<type label="ENUM" length="1" sql="ENUM" quote=""/>
-		<type label="SET" length="1" sql="SET" quote=""/>
-		<type label="Bit" length="0" sql="bit" quote=""/>
-	</group>
-</datatypes><table x="124" y="17" name="crm_users">
+		<group label="Date &amp; Time" color="rgb(200,255,200)">
+			<type label="Date" length="0" sql="DATE" quote="'"/>
+			<type label="Time" length="0" sql="TIME" quote="'"/>
+			<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+			<type label="Year" length="0" sql="YEAR" quote=""/>
+			<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+		</group>
+
+		<group label="Miscellaneous" color="rgb(200,200,255)">
+			<type label="ENUM" length="1" sql="ENUM" quote=""/>
+			<type label="SET" length="1" sql="SET" quote=""/>
+			<type label="Bit" length="0" sql="bit" quote=""/>
+		</group>
+	</datatypes><table x="625" y="31" name="crm_dealing_statuses">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="color" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>'#ffffff'</default></row>
+<row name="sorting" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="27" y="25" name="crm_users">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
@@ -59,34 +76,37 @@
 <row name="photo" null="1" autoincrement="0">
 <datatype>VARCHAR(200)</datatype>
 <default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="163" y="337" name="crm_dealings">
-<row name="id" null="0" autoincrement="1">
+<row name="created_user_id" null="0" autoincrement="0">
 <datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
 </row>
-<row name="title" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<row name="created_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="created_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="created_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
-<row name="budget" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="responsible_user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="status_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="note" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<row name="last_modified_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="last_modified_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="last_modified_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="last_modified_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="582" y="31" name="crm_contacts">
+<table x="50" y="603" name="crm_contacts">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
@@ -104,6 +124,7 @@
 <default>NULL</default></row>
 <row name="created_user_id" null="0" autoincrement="0">
 <datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
 </row>
 <row name="created_user_name" null="0" autoincrement="0">
 <datatype>VARCHAR(500)</datatype>
@@ -116,6 +137,7 @@
 <default>NULL</default></row>
 <row name="last_modified_user_id" null="0" autoincrement="0">
 <datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
 </row>
 <row name="last_modified_user_name" null="0" autoincrement="0">
 <datatype>VARCHAR(500)</datatype>
@@ -124,148 +146,413 @@
 <datatype>DATETIME</datatype>
 </row>
 <row name="last_modified_ip" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="787" y="373" name="crm_companies">
+<table x="802" y="596" name="crm_companies">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<row name="title" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
 <row name="web" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(200)</datatype>
 <default>NULL</default></row>
 <row name="address" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(1000)</datatype>
+<default>NULL</default></row>
+<row name="created_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="created_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="created_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="created_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<row name="last_modified_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="last_modified_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="last_modified_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="last_modified_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1349" y="551" name="crm_tasks">
+<table x="1162" y="167" name="crm_tasks">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="163" y="519" name="crm_dealing_tag_relations">
-<row name="id" null="0" autoincrement="1">
+<row name="status_id" null="0" autoincrement="0">
 <datatype>INTEGER(11)</datatype>
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="166" y="586" name="crm_dealing_tag_names">
-<row name="id" null="0" autoincrement="1">
-<datatype>INTEGER(11)</datatype>
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="1350" y="649" name="crm_recycle">
-<row name="id" null="0" autoincrement="1">
-<datatype>INTEGER(11)</datatype>
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="336" y="341" name="crm_dealing_statuses">
-<row name="id" null="0" autoincrement="1">
-<datatype>INTEGER(11)</datatype>
-</row>
-<row name="title" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="color" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="789" y="32" name="crm_phone_types">
-<row name="id" null="0" autoincrement="1">
-<datatype>INTEGER(11)</datatype>
-</row>
-<row name="title" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="789" y="122" name="crm_contact_phone_relations">
-<row name="id" null="0" autoincrement="1">
-<datatype>INTEGER(11)</datatype>
+<relation table="crm_task_statuses" row="id" />
 </row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default><relation table="crm_task_types" row="id" />
+</row>
+<row name="custom_type_name" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="time" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="contact_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="crm_contacts" row="id" />
+</row>
+<row name="dealing_id" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="crm_dealings" row="id" />
+</row>
+<row name="text" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="result" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="created_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="created_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="created_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="created_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<row name="last_modified_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="last_modified_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="last_modified_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="last_modified_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1080" y="33" name="crm_email_types">
+<table x="675" y="171" name="crm_dealing_tag_relations">
+<row name="dealing_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_dealings" row="id" />
+</row>
+<row name="tag_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_dealing_tag_names" row="id" />
+</row>
+</table>
+<table x="584" y="259" name="crm_dealing_tag_names">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<row name="title" null="1" autoincrement="0">
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="count" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>0</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1502" y="515" name="crm_logs">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="action_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_log_actions" row="id" />
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<row name="before_data" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="after_data" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="restore_flag" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>0</default></row>
+<row name="restore_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="restore_user_name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="restore_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="restore_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1081" y="123" name="crm_contact_email_relations">
+<table x="365" y="173" name="crm_dealings">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<row name="type_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="contact_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="crm_contacts" row="id" />
+</row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="budget" null="1" autoincrement="0">
+<datatype>DECIMAL(10,2)</datatype>
+<default>NULL</default></row>
+<row name="responsible_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="status_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_dealing_statuses" row="id" />
+</row>
+<row name="note" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="created_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="created_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="created_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="created_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<row name="last_modified_user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="last_modified_user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="last_modified_datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="last_modified_ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="786" y="251" name="crm_company_phone_relations">
+<table x="623" y="485" name="crm_phone_types">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<row name="type_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="contact_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="sorting" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1082" y="253" name="crm_company_email_relations">
+<table x="330" y="584" name="crm_contact_phone_relations">
+<row name="type_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_phone_types" row="id" />
+</row>
+<row name="contact_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_contacts" row="id" />
+</row>
+</table>
+<table x="838" y="485" name="crm_email_types">
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
-<row name="type_id" null="1" autoincrement="0">
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="sorting" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="330" y="819" name="crm_contact_email_relations">
+<row name="type_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_email_types" row="id" />
+</row>
+<row name="contact_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_contacts" row="id" />
+</row>
+</table>
+<table x="487" y="939" name="crm_company_phone_relations">
+<row name="type_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_phone_types" row="id" />
+</row>
+<row name="company_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_companies" row="id" />
+</row>
+</table>
+<table x="483" y="709" name="crm_company_email_relations">
+<row name="type_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_email_types" row="id" />
+<relation table="crm_email_types" row="id" />
+</row>
+<row name="company_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_companies" row="id" />
+</row>
+</table>
+<table x="1394" y="234" name="crm_task_types">
+<row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="contact_id" null="1" autoincrement="0">
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="sorting" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1386" y="95" name="crm_task_statuses">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="color" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>'#ffffff'</default></row>
+<row name="sorting" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1679" y="517" name="crm_log_actions">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="alias" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="926" y="27" name="crm_dealing_status_logs">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="dealing_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default><relation table="crm_dealings" row="id" />
+</row>
+<row name="status_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_dealing_statuses" row="id" />
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1144" y="740" name="crm_task_status_logs">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="task_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="crm_tasks" row="id" />
+</row>
+<row name="status_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_task_statuses" row="id" />
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_users" row="id" />
+</row>
+<row name="user_name" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="datetime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="ip" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
