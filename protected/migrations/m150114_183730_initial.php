@@ -292,10 +292,26 @@ class m150114_183730_initial extends CDbMigration
 
 	    $this->createIndex('idx_created_user_id', 'crm_tasks', 'created_user_id', FALSE);
 
+	    $this->createTable('crm_user_roles', array(
+	        'id'=>'pk',
+	        'alias'=>'varchar(100) NOT NULL',
+	        'title'=>'varchar(100) DEFAULT NULL'
+	    ), '');
+
+	    $this->insertMultiple('crm_user_roles',
+	    	array(
+                array('alias' => 'manager', 'title' => 'Менеджер'),
+                array('alias' => 'admin', 'title' => 'Администратор'),
+                array('alias' => 'banned', 'title' => 'Не активный'),
+            )
+        );
+
 	    $this->createTable('crm_users', array(
 	        'id'=>'pk',
+	        'role_id'=>'int(11) NOT NULL',
 	        'name'=>'varchar(500) NOT NULL',
 	        'email'=>'varchar(300) DEFAULT NULL',
+	        'password'=>'varchar(300) NOT NULL',
 	        'mobile_phone'=>'varchar(50) DEFAULT NULL',
 	        'work_phone'=>'varchar(50) DEFAULT NULL',
 	        'note'=>'mediumtext DEFAULT NULL',
@@ -313,6 +329,9 @@ class m150114_183730_initial extends CDbMigration
 	    $this->createIndex('idx_last_modified_user_id', 'crm_users', 'last_modified_user_id', FALSE);
 
 	    $this->createIndex('idx_created_user_id', 'crm_users', 'created_user_id', FALSE);
+
+	    $this->createIndex('idx_role_id', 'crm_user_roles', 'created_user_id', FALSE);
+
 
 	    $this->addForeignKey('fk_crm_companies_crm_users_last_modified_user_id', 'crm_companies', 'last_modified_user_id', 'crm_users', 'id', 'NO ACTION', 'NO ACTION');
 

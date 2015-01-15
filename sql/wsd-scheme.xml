@@ -58,12 +58,19 @@
 <row name="id" null="0" autoincrement="1">
 <datatype>INTEGER(11)</datatype>
 </row>
+<row name="role_id" null="0" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<relation table="crm_user_roles" row="id" />
+</row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(500)</datatype>
 </row>
 <row name="email" null="1" autoincrement="0">
 <datatype>VARCHAR(300)</datatype>
 <default>NULL</default></row>
+<row name="password" null="0" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+</row>
 <row name="mobile_phone" null="1" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
 <default>NULL</default></row>
@@ -554,6 +561,20 @@
 <row name="ip" null="1" autoincrement="0">
 <datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="330" y="19" name="crm_user_roles">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="alias" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
