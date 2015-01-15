@@ -5,8 +5,10 @@
  *
  * The followings are the available columns in table 'crm_users':
  * @property integer $id
+ * @property integer $role_id
  * @property string $name
  * @property string $email
+ * @property string $password
  * @property string $mobile_phone
  * @property string $work_phone
  * @property string $note
@@ -34,13 +36,50 @@
  * @property CrmTaskStatusLogs[] $crmTaskStatusLogs
  * @property CrmTasks[] $crmTasks
  * @property CrmTasks[] $crmTasks1
- * @property CrmUser $lastModifiedUser
- * @property CrmUser[] $crmUsers
  * @property CrmUser $createdUser
+ * @property CrmUser[] $crmUsers
+ * @property CrmUser $lastModifiedUser
  * @property CrmUser[] $crmUsers1
+ * @property CrmUserRoles $role
  */
 class CrmUser extends CActiveRecord
 {
+	private $_confirmPassword;
+
+	public function getConfirmPassword()
+	{
+		return $this->_confirmPassword;
+	}
+
+	public function setConfirmPassword($confirmPassword)
+	{
+		$this->_confirmPassword = $confirmPassword;
+	}
+
+	protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+
+        	if ($this->isNewRecord) {
+        		$this->password = $this->hashPassword($this->password);
+        	}
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+	public function validatePassword($password)
+    {
+        return CPasswordHelper::verifyPassword($password, $this->password);
+    }
+
+    public function hashPassword($password)
+    {
+        return CPasswordHelper::hashPassword($password);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -57,16 +96,18 @@ class CrmUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, created_user_id, created_user_name, created_datetime, last_modified_user_id, last_modified_user_name, last_modified_datetime', 'required'),
-			array('created_user_id, last_modified_user_id', 'numerical', 'integerOnly'=>true),
-			array('name, created_user_name, created_ip, last_modified_user_name, last_modified_ip', 'length', 'max'=>500),
-			array('email', 'length', 'max'=>300),
-			array('mobile_phone, work_phone', 'length', 'max'=>50),
-			array('photo', 'length', 'max'=>200),
+			array('name, password, created_user_id, created_user_name, created_datetime, last_modified_user_id, last_modified_user_name, last_modified_datetime', 'required'),
+			array('role_id, created_user_id, last_modified_user_id', 'numerical', 'integerOnly' => true),
+			array('name, created_user_name, created_ip, last_modified_user_name, last_modified_ip', 'length', 'max' => 500),
+			array('email, password', 'length', 'max' => 300),
+			array('confirmPassword', 'length', 'max' => 300),
+			// array('confirmPassword', 'comparePasswords'),
+			array('mobile_phone, work_phone', 'length', 'max' => 50),
+			array('photo', 'length', 'max' => 200),
 			array('note', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, email, mobile_phone, work_phone, note, photo, created_user_id, created_user_name, created_datetime, created_ip, last_modified_user_id, last_modified_user_name, last_modified_datetime, last_modified_ip', 'safe', 'on'=>'search'),
+			array('id, role_id, name, email, password, mobile_phone, work_phone, note, photo, created_user_id, created_user_name, created_datetime, created_ip, last_modified_user_id, last_modified_user_name, last_modified_datetime, last_modified_ip', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -95,6 +136,7 @@ class CrmUser extends CActiveRecord
 			'crmLastModifiedUsers' => array(self::HAS_MANY, 'CrmUser', 'last_modified_user_id'),
 			'createdUser' => array(self::BELONGS_TO, 'CrmUser', 'created_user_id'),
 			'crmCreatedUsers' => array(self::HAS_MANY, 'CrmUser', 'created_user_id'),
+			'role' => array(self::BELONGS_TO, 'CrmUserRole', 'role_id'),
 		);
 	}
 
@@ -105,8 +147,10 @@ class CrmUser extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'role_id' => 'Role',
 			'name' => 'Name',
 			'email' => 'Email',
+			'password' => 'Password',
 			'mobile_phone' => 'Mobile Phone',
 			'work_phone' => 'Work Phone',
 			'note' => 'Note',
@@ -138,26 +182,28 @@ class CrmUser extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('mobile_phone',$this->mobile_phone,true);
-		$criteria->compare('work_phone',$this->work_phone,true);
-		$criteria->compare('note',$this->note,true);
-		$criteria->compare('photo',$this->photo,true);
-		$criteria->compare('created_user_id',$this->created_user_id);
-		$criteria->compare('created_user_name',$this->created_user_name,true);
-		$criteria->compare('created_datetime',$this->created_datetime,true);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('last_modified_user_id',$this->last_modified_user_id);
-		$criteria->compare('last_modified_user_name',$this->last_modified_user_name,true);
-		$criteria->compare('last_modified_datetime',$this->last_modified_datetime,true);
-		$criteria->compare('last_modified_ip',$this->last_modified_ip,true);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('role_id', $this->role_id);
+		$criteria->compare('name', $this->name, true);
+		$criteria->compare('email', $this->email, true);
+		$criteria->compare('password', $this->password, true);
+		$criteria->compare('mobile_phone', $this->mobile_phone, true);
+		$criteria->compare('work_phone', $this->work_phone, true);
+		$criteria->compare('note', $this->note, true);
+		$criteria->compare('photo', $this->photo, true);
+		$criteria->compare('created_user_id', $this->created_user_id);
+		$criteria->compare('created_user_name', $this->created_user_name, true);
+		$criteria->compare('created_datetime', $this->created_datetime, true);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('last_modified_user_id', $this->last_modified_user_id);
+		$criteria->compare('last_modified_user_name', $this->last_modified_user_name, true);
+		$criteria->compare('last_modified_datetime', $this->last_modified_datetime, true);
+		$criteria->compare('last_modified_ip', $this->last_modified_ip, true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
@@ -167,7 +213,7 @@ class CrmUser extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return CrmUser the static model class
 	 */
-	public static function model($className=__CLASS__)
+	public static function model($className = __CLASS__)
 	{
 		return parent::model($className);
 	}
