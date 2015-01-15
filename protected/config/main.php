@@ -29,7 +29,7 @@ return array(
                 'jquery' => array(
                     'baseUrl' => 'js/',
                     'js' => array(
-                        YII_DEBUG ? 'jquery-1.11.1.js' : 'jquery-1.11.1.min.js'
+                        'jquery-1.11.2.min.js'
                     ),
                 ),
                 'bootstrap3' => array(
@@ -43,26 +43,26 @@ return array(
                     ),
                     'depends' => array('jquery'),
                 ),
-                'my-js' => array(
+                'custom-js' => array(
                     'baseUrl' => 'js/',
                     'js' => array(
                         YII_DEBUG ? 'main.js' : 'main.min.js'
                     ),
                     'depends' =>array('jquery'),
                 ),
-                'my-css' => array(
+                'custom-css' => array(
                     'baseUrl' => 'css/',
                     'css' => array('styles.css?css=1'),
                 ),
             ),
         ),
 
-        // 'user' => array(
-        //     'class' => 'WebUser',
-        //     // enable cookie-based authentication
-        //     'allowAutoLogin' => true,
-        //     'loginUrl' => array('/users/admin/users/login'),
-        // ),
+        'user' => array(
+            'class' => 'CrmWebUser',
+            // enable cookie-based authentication
+            'allowAutoLogin' => true,
+            'loginUrl' => array('/crm/users/login'),
+        ),
 
         'image'=>array(
             'class' => 'application.extensions.image.CImageComponent',
