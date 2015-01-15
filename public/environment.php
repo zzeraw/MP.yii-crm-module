@@ -4,8 +4,8 @@ $environment = 'development';
 
 switch (dirname(__FILE__)) {
     case '/Users/paveldanilov/Sites/sites.dev/yii-crm-module/public':
-    case 'd:\OpenServer\domains\sites.dev\yii-crm-module/public':
-    case 'D:\OpenServer\domains\sites.dev\yii-crm-module/public':
+    case 'd:\OpenServer\domains\sites.dev\yii-crm-module\public':
+    case 'D:\OpenServer\domains\sites.dev\yii-crm-module\public':
         $yii = dirname(__FILE__) . '/../framework/1.1.16/yii.php';
         $protected = '/../protected';
         break;
