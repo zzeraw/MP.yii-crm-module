@@ -4,9 +4,6 @@
 <?php $form = $this->beginWidget('CActiveForm', array(
 	'id' => 'login-form',
 	'enableClientValidation' => false,
-	'clientOptions' => array(
-		'validateOnSubmit' => true,
-	),
 )); ?>
 
 	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>

@@ -80,7 +80,7 @@ class UsersController extends BaseCrmController
             }
         }
 
-        $this->layout = '//templates/login';
+        // $this->layout = '//templates/login';
 
         // display the login form
         $this->render('login', array('model' => $model));

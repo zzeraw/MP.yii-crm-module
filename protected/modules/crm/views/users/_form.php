@@ -15,6 +15,12 @@
 		<?php echo $form->error($model, 'name'); ?>
 	</div>
 
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'email'); ?>
+        <?php echo $form->textField($model, 'email', array('class' => 'form-control input-large')); ?>
+        <?php echo $form->error($model, 'email'); ?>
+    </div>
+
 	<div class="form-group">
 		<?php echo $form->labelEx($model, 'password'); ?>
 		<?php echo $form->passwordField($model, 'password', array('class' => 'form-control input-large', 'value' => '')); ?>

@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="robots" content="none">
-
     <?php Yii::app()->clientScript->registerPackage('jquery'); ?>
     <?php Yii::app()->clientScript->registerPackage('bootstrap3'); ?>
-    <?php Yii::app()->clientScript->registerPackage('my-admin-js'); ?>
-    <?php Yii::app()->clientScript->registerPackage('my-admin-css'); ?>
+    <?php Yii::app()->clientScript->registerPackage('custom-css'); ?>
+    <?php Yii::app()->clientScript->registerPackage('custom-js'); ?>
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <meta name="description" content=''>
+    <meta name="keywords" content=''>
+
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
 
-
-<div class="container-fluid" id="page">
-
-	<?php echo $content; ?>
-
-</div><!-- page -->
+    <div class="login-content">
+        <?php echo $content; ?>
+    </div>
 
 </body>
 
+
 </html>
+
